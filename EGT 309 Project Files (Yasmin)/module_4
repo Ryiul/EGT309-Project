@@ -2,7 +2,7 @@
 FROM python:3.9
 
 # Set working directory
-WORKDIR /egt309/web_ui
+WORKDIR /EGT 309 Project Files (Yasmin)
 
 # Copy requirements file and install dependencies
 COPY requirements.txt . 
