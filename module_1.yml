@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: employee-data-container
-        image: your-dockerhub-username/employee-data:latest  # Replace with your image name
+        image: myrepo/employee-data:latest  # Replace with your image name
         ports:
         - containerPort: 5000
         # Liveness probe: Checks that your application is healthy.
