@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 # Function to call the model inference API
-def get_prediction(features):
+def get_prediction():
     #url = "http://<model-inference-service>:80/predict/"  # Replace with your model inference service URL
     url = "http://localhost:5000/predict/"
     try:
