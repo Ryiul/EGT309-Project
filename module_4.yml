@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-ui-deployment
+spec:
+  replicas: 3 # Number of pod replicas (adjust as needed)
+  selector:
+    matchLabels:
+      app: web-ui # Label to match with pods
+  template:
+    metadata:
+      labels:
+        app: web-ui # Same label as above
+    spec:
+      containers:
+      - name: web-ui-container # Name of the container
+        image: myrepo/web-ui:latest # Docker image
+        ports:
+        - containerPort: 8501 # Port the Streamlit app listens on inside the container
+        resources: # Resource requests and limits (adjust as needed)
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-ui-service
+spec:
+  selector:
+    app: web-ui
+  ports:
+  - protocol: TCP
+    port: 80 # the port the web UI will be accessible on
+    targetPort: 8501 # Streamlit's default port
+  type: LoadBalancer # can change to ClusterIP or NodePort if needed
