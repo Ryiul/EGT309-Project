@@ -1,22 +1,30 @@
+#!/usr/bin/env python3
+"""
+Docker-ready script for training and saving model
+Usage:
+    python train_model.py --csv-data Processed_Employee_Data.csv
+"""
+
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
+from sklearn.model_selection import train_test_split
 
 import argparse
 import pandas as pd
 import numpy as np
 import os
 
-def load_data(train_file, test_file):
-    # Load training and testing datasets
-    train_df = pd.read_csv(train_file)
-    test_df = pd.read_csv(test_file)
+def load_data(csv_file, test_size=0.25):
+    # Load dataset
+    df = pd.read_csv(csv_file)
 
-    # Last column is the target variable
-    X_train = train_df.iloc[:, :-1].values
-    y_train = train_df.iloc[:, -1].values
-    X_test = test_df.iloc[:, :-1].values
-    y_test = test_df.iloc[:, -1].values
+    # Assuming the last column is the target variable
+    X = df.iloc[:, :-1].values
+    y = df.iloc[:, -1].values
+
+    # Split into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=10, shuffle=True)
 
     return X_train, X_test, y_train, y_test
 
