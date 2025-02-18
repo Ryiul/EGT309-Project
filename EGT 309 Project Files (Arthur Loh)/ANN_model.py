@@ -2,11 +2,6 @@ import tensorflow
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
-import pandas as pd
-import logging
-
-logger = logging.getLogger(__name__)
-
 
 def ANN_train(X_train, X_test, y_train, y_test):
     model = Sequential()
