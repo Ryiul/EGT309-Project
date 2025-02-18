@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: model-inference
-        image: myrepo/model-inference:latest
+        image: myrepo-model-inference:latest
         ports:
         - containerPort: 5000
         resources:
