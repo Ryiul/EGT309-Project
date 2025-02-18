@@ -2,12 +2,13 @@ from fastapi import FastAPI, HTTPException
 import pickle
 import numpy as np
 import uvicorn
+from keras.models import load_model
 
 # Load pre-trained model (Assuming a pickle file `model.pkl`)
-MODEL_PATH = "model.pkl"
+MODEL_PATH = "model.h5"
 try:
     with open(MODEL_PATH, "rb") as f:
-        model = pickle.load(f)
+    model = load_model(MODEL_PATH)
 except Exception as e:
     raise RuntimeError(f"Error loading model: {e}")
 
