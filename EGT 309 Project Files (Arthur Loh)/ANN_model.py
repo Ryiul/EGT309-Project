@@ -5,7 +5,7 @@ from tensorflow.keras.layers import Dense
 
 def ANN_train(X_train, X_test, y_train, y_test):
     model = Sequential()
-    model.add(Dense(64,activation='relu'))
+    model.add(Dense(64, activation='relu', input_shape=(X_train.shape[1],)))
     model.add(Dense(32,activation='relu'))
     model.add(Dense(32,activation='relu'))
     model.add(Dense(1,activation='linear'))
