@@ -15,9 +15,9 @@ import pandas as pd
 import numpy as np
 import os
 
-def load_data(csv_file, test_size=0.25):
+def load_data(test_size=0.25):
     # Load dataset
-    df = DATA.to_csv("Processed_Employee_Data.csv", index=False)
+    df = pd.read_csv("Processed_Employee_Data.csv")
 
     # Assuming the last column is the target variable
     X = df.iloc[:, :-1].values
